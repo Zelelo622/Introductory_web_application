@@ -1,7 +1,10 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export const Application = () => {
   return (
-    <div>Application</div>
+    <Container>
+      <div>Application</div>
+    </Container>
   )
 }
