@@ -6,7 +6,6 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { db } from '../utils/firebase';
 
 export const Application = () => {
-  const [applications, setApplications] = useState([]);
   const [complaint, setComplaint] = useState("");
   const [severitySymptoms, setSeveritySymptoms] = useState(0);
   const [date, setDate] = useState("");
@@ -14,7 +13,6 @@ export const Application = () => {
   const [secondName, setSecondName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [tempUuid, setTempUuid] = useState("");
   const [hover, setHover] = useState(0);
 
   //write
