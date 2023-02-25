@@ -22,12 +22,12 @@ export const Auth = () => {
                         :
                         <div className='min-vh-100 d-flex justify-content-center align-items-center'>
                             <Form onSubmit={handleSubmit}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Group className="mb-3">
                                     <Form.Label>Логин</Form.Label>
                                     <Form.Control type="text" placeholder="Введите логин" ref={login} />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Group className="mb-3" co>
                                     <Form.Label>Пароль</Form.Label>
                                     <Form.Control type="password" placeholder="Пароль" ref={password} />
                                 </Form.Group>

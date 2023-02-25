@@ -2,7 +2,7 @@ import { Application } from "./pages/Application";
 import { Auth } from "./pages/Auth";
 import { PersonalAccount } from "./pages/PersonalAccount";
 import { Roles } from "./pages/Roles";
-import {ADMIN_ROUTE, LOGIN_ROUTE, PATIENT_ROUTE, ROLES_ROUTE} from "./utils/consts";
+import { ADMIN_ROUTE, LOGIN_ROUTE, PATIENT_ROUTE, ROLES_ROUTE } from "./utils/consts";
 
 export const routes = [
     {
