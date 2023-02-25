@@ -1,7 +1,6 @@
-import { onValue, query, ref } from 'firebase/database';
+import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useState } from 'react'
 import { Container, Table } from 'react-bootstrap'
-import { collection, onSnapshot, QuerySnapshot } from 'firebase/firestore'
 import { db } from '../utils/firebase';
 
 export const PersonalAccount = () => {
@@ -15,11 +14,10 @@ export const PersonalAccount = () => {
         id: key,
         ...data[key]
       }));
+      newPosts.sort((a, b) => new Date(...b.date.split('/')) - new Date(...a.date.split('/')));
       setApplications(newPosts);
     });
   }, []);
-
-  console.log(applications)
 
   return (
     <Container>
