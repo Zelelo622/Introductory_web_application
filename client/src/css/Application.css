@@ -11,3 +11,8 @@
 .off {
   color: #bbbbbb;
 }
+
+.required-label::after {
+  content: " *";
+  color: red;
+}

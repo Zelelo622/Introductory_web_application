@@ -1,9 +1,10 @@
 import '../css/Application.css';
 import { uid } from "uid";
-import { set, ref, onValue, remove, update } from "firebase/database";
-import { useState, useEffect } from "react";
+import { set, ref } from "firebase/database";
+import { useState } from "react";
 import { Button, Container, Form } from 'react-bootstrap';
 import { db } from '../utils/firebase';
+import { isEmpty } from '@firebase/util';
 
 export const Application = () => {
   const [complaint, setComplaint] = useState("");
@@ -19,36 +20,40 @@ export const Application = () => {
   //write
   const writeToDatabase = () => {
     const uuid = uid();
-    set(ref(db, '/Application/' + uuid), {
-      complaint,
-      severitySymptoms,
-      date,
-      firstName,
-      secondName,
-      phone,
-      email,
-      status,
-    });
-    setComplaint("");
-    setSeveritySymptoms(0);
-    setDate("");
-    setFirstName("");
-    setSecondName("");
-    setPhone("");
-    setEmail("");
-    setHover(0);
-    console.log(severitySymptoms);
+    if (complaint === '' || severitySymptoms === 0 || date === ''
+      || firstName === '' || secondName === '' || phone === '') {
+      alert('Не заполнены все обязательные поля')
+    } else {
+      set(ref(db, '/Application/' + uuid), {
+        complaint,
+        severitySymptoms,
+        date,
+        firstName,
+        secondName,
+        phone,
+        email,
+        status,
+      });
+      setComplaint("");
+      setSeveritySymptoms(0);
+      setDate("");
+      setFirstName("");
+      setSecondName("");
+      setPhone("");
+      setEmail("");
+      setHover(0);
+    }
   };
 
   return (
     <div className="App">
       <Container>
         <Form.Group className="mb-3">
-          <Form.Label>Жалобы</Form.Label>
+          <Form.Label className='required-label'>Жалобы</Form.Label>
           <Form.Control type="text" placeholder="Жалобы" id='complaintbox' value={complaint} onChange={e => setComplaint(e.target.value)} />
         </Form.Group>
         <div className="star-rating mb-3">
-          <Form.Label className='d-block'>Тяжесть симптомов</Form.Label>
+          <Form.Label className='d-block required-label'>Тяжесть симптомов</Form.Label>
           {[...Array(10)].map((num, index) => {
             index += 1;
             return (
@@ -66,19 +71,19 @@ export const Application = () => {
           })}
         </div>
         <Form.Group className="mb-3">
-          <Form.Label>Дата посещения</Form.Label>
+          <Form.Label className='required-label'>Дата посещения</Form.Label>
           <Form.Control type="date" placeholder="Дата посещения" id='datebox' value={date} onChange={e => setDate(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Имя</Form.Label>
+          <Form.Label className='required-label'>Имя</Form.Label>
           <Form.Control type="text" placeholder="Имя" id='firstNamebox' value={firstName} onChange={e => setFirstName(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Фамилия</Form.Label>
+          <Form.Label className='required-label'>Фамилия</Form.Label>
           <Form.Control type="text" placeholder="Фамилия" id='secondnamebox' value={secondName} onChange={e => setSecondName(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Телефон</Form.Label>
+          <Form.Label className='required-label'>Телефон</Form.Label>
           <Form.Control type="tel" placeholder="Телефон" id='phonebox' value={phone} onChange={e => setPhone(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">

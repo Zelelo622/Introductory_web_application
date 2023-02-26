@@ -5,11 +5,6 @@ import { db } from '../utils/firebase';
 
 export const PersonalAccount = () => {
   const [applications, setApplications] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
-  const [tempUuid, setTempUuid] = useState("");
-  const [status, setStatus] = useState(false);
-
-  const [complaint, setComplaint] = useState("");
 
   useEffect(() => {
     const starCountRef = ref(db, 'Application/');
