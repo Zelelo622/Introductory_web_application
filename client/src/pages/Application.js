@@ -13,6 +13,7 @@ export const Application = () => {
   const [secondName, setSecondName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(false);
   const [hover, setHover] = useState(0);
 
   //write
@@ -26,6 +27,7 @@ export const Application = () => {
       secondName,
       phone,
       email,
+      status,
     });
     setComplaint("");
     setSeveritySymptoms(0);
