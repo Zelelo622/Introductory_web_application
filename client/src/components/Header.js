@@ -1,9 +1,7 @@
 import React from 'react'
-import { Navbar, Container, Nav, Button, NavLink } from "react-bootstrap";
-import { Auth } from '../pages/Auth';
-import { Application } from '../pages/Application';
+import { Navbar, Container, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE, PATIENT_ROUTE, ROLES_ROUTE } from '../utils/consts';
+import { ARCHIVE_ROUTE, ROLES_ROUTE } from '../utils/consts';
 
 export const Header = () => {
     const getLogin = localStorage.getItem("login");
@@ -24,6 +22,7 @@ export const Header = () => {
                     getLogin && getPassword ?
                         <div className="ms-auto" style={{ color: "white", alignItems: "center" }}>
                             <span className='text-white'>Администратор</span>
+                            <Button href={ARCHIVE_ROUTE} variant={"outline-light"} style={{ marginLeft: 20 }}>Архив</Button>
                             <Button variant={"outline-light"} onClick={() => logOut()} style={{ marginLeft: 20 }}>Выйти</Button>
                         </div>
                         :

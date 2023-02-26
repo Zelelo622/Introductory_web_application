@@ -1,6 +1,6 @@
 import { onValue, ref, update } from 'firebase/database';
 import React, { useEffect, useState } from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { db } from '../utils/firebase';
 
 export const PersonalAccount = () => {
@@ -10,12 +10,12 @@ export const PersonalAccount = () => {
     const starCountRef = ref(db, 'Application/');
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      const newPosts = Object.keys(data).map(key => ({
+      const newApplication = Object.keys(data).map(key => ({
         id: key,
         ...data[key]
       }));
-      newPosts.sort((a, b) => new Date(...b.date.split('/')) - new Date(...a.date.split('/')));
-      setApplications(newPosts);
+      newApplication.sort((a, b) => new Date(...b.date.split('/')) - new Date(...a.date.split('/')));
+      setApplications(newApplication);
     });
   }, []);
 
@@ -27,17 +27,17 @@ export const PersonalAccount = () => {
 
   return (
     <Container>
-      <Table striped bordered hover>
+      <table className='table table-hover table-striped text-center'>
         <thead>
           <tr className="table-info">
-            <th>Жалобы</th>
-            <th>Тяжесть</th>
-            <th>Дата посещения</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Телефон</th>
-            <th>Почта</th>
-            <th>Статус</th>
+            <th scope="col">Жалобы</th>
+            <th scope="col">Тяжесть</th>
+            <th scope="col">Дата посещения</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Почта</th>
+            <th scope="col">Статус</th>
           </tr>
         </thead>
         <tbody>
@@ -45,20 +45,20 @@ export const PersonalAccount = () => {
             applications.map((item, id) => {
               return (
                 <tr key={id}>
-                  <th>{item.complaint}</th>
-                  <th>{item.severitySymptoms}</th>
-                  <th>{item.date}</th>
-                  <th>{item.firstName}</th>
-                  <th>{item.secondName}</th>
-                  <th>{item.phone}</th>
-                  <th>{item.email}</th>
-                  <th><input onChange={() => toggleStatus(item)} type='checkbox' checked={item.status ? 'checked' : ''} /></th>
+                  <th className='fw-normal' scope="row">{item.complaint}</th>
+                  <th className='fw-normal'>{item.severitySymptoms}</th>
+                  <th className='fw-normal'>{item.date}</th>
+                  <th className='fw-normal'>{item.firstName}</th>
+                  <th className='fw-normal'>{item.secondName}</th>
+                  <th className='fw-normal'>{item.phone}</th>
+                  <th className='fw-normal'>{item.email}</th>
+                  <th className='fw-normal'><input onChange={() => toggleStatus(item)} type='checkbox' checked={item.status ? 'checked' : ''} /></th>
                 </tr>
               )
             })
           }
         </tbody>
-      </Table>
+      </table>
     </Container>
   )
 }
