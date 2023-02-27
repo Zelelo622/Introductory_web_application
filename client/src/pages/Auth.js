@@ -20,7 +20,7 @@ export const Auth = () => {
                 {
                     getLogin && getPassword ? <PersonalAccount />
                         :
-                        <div className='min-vh-100 d-flex justify-content-center align-items-center'>
+                        <div className='d-flex justify-content-center'>
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Логин</Form.Label>

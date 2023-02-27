@@ -1,7 +1,8 @@
 import React from 'react'
 import { Navbar, Container, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import { ARCHIVE_ROUTE, ROLES_ROUTE } from '../utils/consts';
+import { ADMIN_ROUTE, ARCHIVE_ROUTE, ROLES_ROUTE } from '../utils/consts';
+import '../css/media.css'
 
 export const Header = () => {
     const getLogin = localStorage.getItem("login");
@@ -16,19 +17,24 @@ export const Header = () => {
 
     return (
         <Navbar className='mb-5' bg="dark" variant="dark">
-            <Container>
+            <Container className='header'>
                 <span className='text-white'>Поликлиника</span>
                 {
                     getLogin && getPassword ?
-                        <div className="ms-auto" style={{ color: "white", alignItems: "center" }}>
+                        <div className="header-nav ms-auto" style={{ color: "white", alignItems: "center", display: "flex" }}>
                             <span className='text-white'>Администратор</span>
-                            <Button href={ARCHIVE_ROUTE} variant={"outline-light"} style={{ marginLeft: 20 }}>Архив</Button>
-                            <Button variant={"outline-light"} onClick={() => logOut()} style={{ marginLeft: 20 }}>Выйти</Button>
+                            <div className='header-btns'>
+                                <Button href={ADMIN_ROUTE} variant={"outline-light"} style={{ marginLeft: 20 }}>Заявки</Button>
+                                <Button href={ARCHIVE_ROUTE} variant={"outline-light"} style={{ marginLeft: 20 }}>Архив</Button>
+                                <Button variant={"outline-light"} onClick={() => logOut()} style={{ marginLeft: 20 }}>Выйти</Button>
+                            </div>
                         </div>
                         :
-                        <div className="ms-auto" style={{ color: "white", alignItems: "center" }}>
+                        <div className="header-nav ms-auto" style={{ color: "white", alignItems: "center", display: "flex" }}>
                             <span className='text-white'>Пациент</span>
-                            <Button variant={"outline-light"} onClick={() => navigate(ROLES_ROUTE)} style={{ marginLeft: 20 }}>Смена роли</Button>
+                            <div className='header-btns'>
+                                <Button variant={"outline-light"} onClick={() => navigate(ROLES_ROUTE)} style={{ marginLeft: 20 }}>Смена роли</Button>
+                            </div>
                         </div>
                 }
             </Container>

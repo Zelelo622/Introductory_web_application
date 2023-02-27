@@ -4,7 +4,7 @@ import { set, ref } from "firebase/database";
 import { useState } from "react";
 import { Button, Container, Form } from 'react-bootstrap';
 import { db } from '../utils/firebase';
-import { isEmpty } from '@firebase/util';
+import '../css/media.css';
 
 export const Application = () => {
   const [complaint, setComplaint] = useState("");
@@ -90,7 +90,7 @@ export const Application = () => {
           <Form.Label>Почта</Form.Label>
           <Form.Control type="email" placeholder="Почта" id='emailbox' value={email} onChange={e => setEmail(e.target.value)} />
         </Form.Group>
-        <Button type="submit" onClick={writeToDatabase}>
+        <Button className='btn-application' type="submit" onClick={writeToDatabase}>
           Отправить
         </Button>
       </Container>

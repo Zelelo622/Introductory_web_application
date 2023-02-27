@@ -1,0 +1,60 @@
+@media (max-width: 1000px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 15px;
+  }
+  .table td {
+    padding-left: 50%;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    display: block !important;
+    text-align: center !important;
+  }
+  .header-nav {
+    display: block !important;
+    margin-top: 30px;
+  }
+
+  .header-btns {
+    margin-top: 20px;
+  }
+  .header-btns > *:first-child {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 505px) {
+  .table td {
+    text-align: right !important;
+  }
+}
+
+@media (max-width: 370px) {
+  .btn-application {
+    margin-bottom: 20px;
+  }
+}

@@ -2,6 +2,8 @@ import { onValue, ref, update } from 'firebase/database';
 import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { db } from '../utils/firebase';
+import '../css/TableStyle.css'
+import '../css/media.css';
 
 export const PersonalAccount = () => {
   const [applications, setApplications] = useState([]);
@@ -27,17 +29,17 @@ export const PersonalAccount = () => {
 
   return (
     <Container>
-      <table className='table table-hover table-striped text-center'>
+      <table className='table'>
         <thead>
-          <tr className="table-info">
-            <th scope="col">Жалобы</th>
-            <th scope="col">Тяжесть</th>
-            <th scope="col">Дата посещения</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Телефон</th>
-            <th scope="col">Почта</th>
-            <th scope="col">Статус</th>
+          <tr className='table-info'>
+            <th>Жалобы</th>
+            <th>Тяжесть</th>
+            <th>Дата посещения</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <th>Статус</th>
           </tr>
         </thead>
         <tbody>
@@ -45,14 +47,14 @@ export const PersonalAccount = () => {
             applications.map((item, id) => {
               return (
                 <tr key={id}>
-                  <th className='fw-normal' scope="row">{item.complaint}</th>
-                  <th className='fw-normal'>{item.severitySymptoms}</th>
-                  <th className='fw-normal'>{item.date}</th>
-                  <th className='fw-normal'>{item.firstName}</th>
-                  <th className='fw-normal'>{item.secondName}</th>
-                  <th className='fw-normal'>{item.phone}</th>
-                  <th className='fw-normal'>{item.email}</th>
-                  <th className='fw-normal'><input onChange={() => toggleStatus(item)} type='checkbox' checked={item.status ? 'checked' : ''} /></th>
+                  <td data-label="Жалобы">{item.complaint}</td>
+                  <td data-label="Тяжесть">{item.severitySymptoms}</td>
+                  <td data-label="Дата посещения">{item.date}</td>
+                  <td data-label="Имя">{item.firstName}</td>
+                  <td data-label="Фамилия">{item.secondName}</td>
+                  <td data-label="Телефон">{item.phone}</td>
+                  <td data-label="Почта">{item.email}</td>
+                  <td data-label="Статус"><input onChange={() => toggleStatus(item)} type='checkbox' checked={item.status ? 'checked' : ''} /></td>
                 </tr>
               )
             })
